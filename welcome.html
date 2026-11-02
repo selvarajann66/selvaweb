@@ -1,1 +1,443 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>SELVA // BOOT</title><style>@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Permanent+Marker&display=swap');*{box-sizing:border-box;margin:0;padding:0}html,body{width:100%;height:100%;overflow:hidden;background:#000;color:#fff}body{display:flex;align-items:center;justify-content:center;text-align:center;font-family:'Bebas Neue',Impact,sans-serif;background:radial-gradient(circle at center,rgba(225,6,0,.13),transparent 38%),#000}.welcome{position:relative;padding:35px 25px}.welcome:before,.welcome:after{content:'';position:absolute;left:50%;width:70vw;height:2px;background:var(--r,#e10600);box-shadow:0 0 18px #e10600;transform:translateX(-50%) skewX(-35deg);opacity:.65}.welcome:before{top:5px}.welcome:after{bottom:5px}.boot{font:400 15px/1 'Permanent Marker',cursive;color:#ff2424;letter-spacing:3px;transform:rotate(-2deg);text-shadow:0 0 12px rgba(225,6,0,.8)}h1{margin-top:18px;font:400 clamp(90px,18vw,190px)/.78 'Bebas Neue',Impact,sans-serif;letter-spacing:8px;color:#f5f5f2;text-shadow:4px 4px 0 #000,0 0 18px rgba(255,255,255,.25),0 0 50px rgba(225,6,0,.65);animation:hero 1.8s ease-in-out infinite alternate}.sub{margin-top:22px;color:#fff;font:400 15px/1 'Bebas Neue',Impact,sans-serif;letter-spacing:7px}.line{width:min(400px,72vw);height:3px;margin:20px auto;background:linear-gradient(90deg,transparent,#e10600,#fff,#e10600,transparent);box-shadow:0 0 20px rgba(225,6,0,.75)}@keyframes hero{from{transform:scale(1);filter:drop-shadow(0 0 0 rgba(225,6,0,0))}to{transform:scale(1.018);filter:drop-shadow(0 0 12px rgba(225,6,0,.45))}}@media(max-width:600px){h1{font-size:92px;letter-spacing:5px}.boot{font-size:11px}.sub{font-size:11px;letter-spacing:4px}}</style></head><body><div class="welcome"><div class="boot">SYSTEM BOOT // SELVA</div><h1>WELCOME</h1><div class="sub">ENTER THE ANIME ZONE</div><div class="line"></div></div><script>setTimeout(()=>location.replace('home.html'),2400);</script></body></html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#090914">
+
+    <title>SELVA WEB | Welcome</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg: #090914;
+            --purple: #8b5cf6;
+            --blue: #42b8ff;
+            --white: #f5f5ff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: var(--bg);
+            color: var(--white);
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* BACKGROUND */
+
+        .background {
+            position: fixed;
+            inset: 0;
+            background:
+                linear-gradient(120deg,
+                rgba(9,9,20,.94),
+                rgba(12,10,29,.78),
+                rgba(9,9,20,.94)),
+                url('assets/anime_bg.png') center/cover no-repeat;
+            animation: backgroundZoom 12s ease-in-out infinite alternate;
+        }
+
+        .background::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(circle at 20% 30%, #8b5cf633, transparent 35%),
+                radial-gradient(circle at 80% 70%, #42b8ff2b, transparent 35%);
+        }
+
+        /* LIGHT EFFECTS */
+
+        .glow {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: .45;
+            animation: float 7s ease-in-out infinite alternate;
+        }
+
+        .glow-one {
+            background: var(--purple);
+            top: -100px;
+            left: -100px;
+        }
+
+        .glow-two {
+            background: var(--blue);
+            bottom: -120px;
+            right: -80px;
+            animation-delay: 2s;
+        }
+
+        /* PARTICLES */
+
+        .particles {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            border-radius: 50%;
+            background: #b99aff;
+            box-shadow: 0 0 12px #a77aff;
+            animation: rise linear infinite;
+        }
+
+        /* MAIN */
+
+        .welcome {
+            position: relative;
+            z-index: 2;
+            width: 90%;
+            max-width: 650px;
+            text-align: center;
+            animation: enter 1.2s cubic-bezier(.2,.8,.2,1) both;
+        }
+
+        /* LOGO */
+
+        .logo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 13px;
+            margin-bottom: 55px;
+            animation: logoReveal 1.2s ease both;
+        }
+
+        .logo-icon {
+            width: 54px;
+            height: 54px;
+            display: grid;
+            place-items: center;
+            border-radius: 17px;
+            background: linear-gradient(135deg, var(--purple), var(--blue));
+            box-shadow: 0 0 35px #8b5cf655;
+            font: 800 28px 'Outfit';
+            animation: logoPulse 3s ease-in-out infinite;
+        }
+
+        .logo-text {
+            font: 800 22px 'Outfit';
+            letter-spacing: 3px;
+        }
+
+        .logo-text span {
+            color: #a99aff;
+            margin-left: 5px;
+            font-weight: 500;
+        }
+
+        /* WELCOME TEXT */
+
+        .eyebrow {
+            color: #b8a7ff;
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: 5px;
+            margin-bottom: 23px;
+            animation: fadeUp 1s .3s both;
+        }
+
+        h1 {
+            font: 800 clamp(55px, 12vw, 105px)/1 'Outfit', sans-serif;
+            letter-spacing: -4px;
+            color: #fff;
+            text-shadow: 0 0 40px #9b78ff55;
+            animation: titleReveal 1.3s .2s both;
+        }
+
+        h1 span {
+            display: block;
+            background: linear-gradient(90deg, #b18aff, #69caff, #b18aff);
+            background-size: 200% auto;
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            animation: gradientMove 4s linear infinite;
+        }
+
+        .description {
+            margin-top: 24px;
+            color: #aaaac3;
+            font-size: 13px;
+            letter-spacing: 1px;
+            line-height: 1.8;
+            animation: fadeUp 1s .6s both;
+        }
+
+        /* DIVIDER */
+
+        .divider {
+            width: 0;
+            height: 2px;
+            margin: 32px auto;
+            background: linear-gradient(90deg, var(--purple), var(--blue));
+            box-shadow: 0 0 20px #8b5cf6;
+            animation: lineExpand 1.3s .7s forwards;
+        }
+
+        /* LOADING */
+
+        .loading-text {
+            color: #a5a5bd;
+            font-size: 10px;
+            letter-spacing: 3px;
+            margin-bottom: 14px;
+        }
+
+        .progress {
+            width: min(300px, 75%);
+            height: 4px;
+            margin: auto;
+            overflow: hidden;
+            border-radius: 10px;
+            background: #ffffff16;
+        }
+
+        .progress-bar {
+            height: 100%;
+            width: 0;
+            border-radius: 10px;
+            background: linear-gradient(90deg, var(--purple), var(--blue));
+            box-shadow: 0 0 15px var(--purple);
+            animation: loading 3.6s linear forwards;
+        }
+
+        .footer {
+            margin-top: 30px;
+            color: #777791;
+            font-size: 9px;
+            letter-spacing: 2px;
+        }
+
+        /* SKIP */
+
+        .skip {
+            position: fixed;
+            z-index: 5;
+            right: 28px;
+            bottom: 25px;
+            padding: 11px 18px;
+            border: 1px solid #a38aff55;
+            border-radius: 9px;
+            background: #17172bcc;
+            color: #e5ddff;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: .3s;
+        }
+
+        .skip:hover {
+            background: #8b5cf6;
+            transform: translateY(-3px);
+        }
+
+        /* ANIMATIONS */
+
+        @keyframes enter {
+            from { opacity: 0; transform: translateY(35px) scale(.96); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        @keyframes logoReveal {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes titleReveal {
+            from { opacity: 0; transform: scale(.8); filter: blur(12px); }
+            to { opacity: 1; transform: scale(1); filter: blur(0); }
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes logoPulse {
+            0%, 100% { box-shadow: 0 0 20px #8b5cf633; }
+            50% { box-shadow: 0 0 40px #42b8ff88; }
+        }
+
+        @keyframes gradientMove {
+            to { background-position: 200% center; }
+        }
+
+        @keyframes lineExpand {
+            to { width: min(350px, 75%); }
+        }
+
+        @keyframes loading {
+            to { width: 100%; }
+        }
+
+        @keyframes float {
+            from { transform: translate(0, 0); }
+            to { transform: translate(70px, 50px); }
+        }
+
+        @keyframes rise {
+            from { transform: translateY(110vh); opacity: 0; }
+            20% { opacity: .8; }
+            80% { opacity: .8; }
+            to { transform: translateY(-10vh); opacity: 0; }
+        }
+
+        @keyframes backgroundZoom {
+            from { transform: scale(1); }
+            to { transform: scale(1.12); }
+        }
+
+        /* MOBILE */
+
+        @media(max-width: 600px) {
+            .logo { margin-bottom: 45px; }
+            .logo-icon { width: 46px; height: 46px; }
+            .logo-text { font-size: 18px; }
+            h1 { letter-spacing: -2px; }
+            .eyebrow { font-size: 9px; letter-spacing: 3px; }
+            .description { font-size: 11px; }
+            .skip { right: 15px; bottom: 15px; }
+        }
+
+        /* REDUCED MOTION */
+
+        @media(prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: .01ms !important;
+                animation-iteration-count: 1 !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="background">
+    <div class="glow glow-one"></div>
+    <div class="glow glow-two"></div>
+</div>
+
+<div class="particles" id="particles"></div>
+
+<main class="welcome">
+
+    <div class="logo">
+        <div class="logo-icon">S</div>
+        <div class="logo-text">
+            SELVA<span>WEB</span>
+        </div>
+    </div>
+
+    <div class="eyebrow">
+        ✦ YOUR DIGITAL UNIVERSE ✦
+    </div>
+
+    <h1>
+        WELCOME
+        <span>TO SELVA</span>
+    </h1>
+
+    <p class="description">
+        Discover games, Android apps and creative projects.<br>
+        Your next adventure starts here.
+    </p>
+
+    <div class="divider"></div>
+
+    <div class="loading-text" id="loadingText">
+        PREPARING YOUR EXPERIENCE...
+    </div>
+
+    <div class="progress">
+        <div class="progress-bar"></div>
+    </div>
+
+    <div class="footer">
+        DESIGNED WITH PASSION · © SELVA WEB
+    </div>
+
+</main>
+
+<button class="skip" onclick="goHome()">SKIP INTRO ↗</button>
+
+<script>
+
+    /* PARTICLES */
+
+    const particleArea = document.getElementById("particles");
+
+    for (let i = 0; i < 35; i++) {
+
+        const particle = document.createElement("span");
+
+        particle.className = "particle";
+
+        particle.style.left = Math.random() * 100 + "%";
+        particle.style.animationDuration = (5 + Math.random() * 8) + "s";
+        particle.style.animationDelay = (Math.random() * 8) + "s";
+
+        particleArea.appendChild(particle);
+    }
+
+    /* PAGE TRANSITION */
+
+    let redirected = false;
+
+    function goHome() {
+
+        if (redirected) return;
+
+        redirected = true;
+
+        document.body.style.transition = "opacity .65s ease";
+        document.body.style.opacity = "0";
+
+        setTimeout(() => {
+            window.location.replace("home.html");
+        }, 650);
+    }
+
+    /* AUTO ENTER */
+
+    setTimeout(() => {
+
+        document.getElementById("loadingText").textContent =
+            "WELCOME TO SELVA WEB";
+
+    }, 2800);
+
+    setTimeout(goHome, 4000);
+
+</script>
+
+</body>
+</html>
